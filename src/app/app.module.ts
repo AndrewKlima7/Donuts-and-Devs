@@ -1,16 +1,24 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {DonutComponent} from './donut/donut.component';
 import { AppComponent } from './app.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DonutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    HttpClientModule, 
+    RouterModule.forRoot([
+      { path: '', component: AppComponent, pathMatch: 'full' },
+      {path: 'donut', component: DonutComponent}
+    ])
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
